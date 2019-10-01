@@ -1,6 +1,6 @@
 package com.usermgmt.resources.users.v2;
 
-import com.usermgmt.model.entities.UserEntity;
+import com.usermgmt.model.dtos.UserDTO;
 import com.usermgmt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class UserResource {
   private UserService userService;
 
   @PostMapping
-  public ResponseEntity post(@RequestBody final UserEntity user) {
+  public ResponseEntity post(@RequestBody final UserDTO user) {
     return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
   }
 
@@ -38,7 +38,7 @@ public class UserResource {
   }
 
   @PutMapping
-  public ResponseEntity put(@RequestBody final UserEntity user) {
+  public ResponseEntity put(@RequestBody final UserDTO user) {
     return ResponseEntity.ok(userService.save(user));
   }
 
