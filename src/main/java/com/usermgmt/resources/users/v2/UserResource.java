@@ -4,6 +4,7 @@ import com.usermgmt.model.dtos.UserDTO;
 import com.usermgmt.service.UserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -34,8 +35,8 @@ public class UserResource {
   }
 
   @GetMapping
-  public ResponseEntity get() {
-    return ResponseEntity.ok(userService.getAll());
+  public ResponseEntity get(final Pageable pageable) {
+    return ResponseEntity.ok(userService.getAll(pageable));
   }
 
   @PutMapping

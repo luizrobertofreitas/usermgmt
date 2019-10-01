@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,11 +31,11 @@ public class UserService {
         userRepository.findById(id).orElseThrow(() -> NotFoundException.builder().resourceId(id).build()));
   }
 
-  public List<UserDTO> getAll() {
-    return userRepository.findAll()
+  public Page<UserDTO> getAll(final Pageable pageable) {
+    return new PageImpl<>(userRepository.findAll(pageable).getContent()
         .parallelStream()
         .map(this::convertUserEntityToUserDTO)
-        .collect(Collectors.toList());
+        .collect(Collectors.toList()), pageable, 0L);
   }
 
   public void delete(final Long id) {
