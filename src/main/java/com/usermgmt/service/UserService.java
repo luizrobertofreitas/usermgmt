@@ -35,6 +35,13 @@ public class UserService {
         .collect(Collectors.toList());
   }
 
+  public List<UserDTO> getAll(final String name) {
+    return userRepository.findByNameLike(name)
+        .parallelStream()
+        .map(this::convertUserEntityToUserDTO)
+        .collect(Collectors.toList());
+  }
+
   public void delete(final Long id) {
     userRepository.deleteById(id);
   }

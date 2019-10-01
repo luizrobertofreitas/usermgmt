@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller("userResourceV2")
@@ -34,7 +35,9 @@ public class UserResource {
   }
 
   @GetMapping
-  public ResponseEntity get() {
+  public ResponseEntity get(@RequestParam(value = "name", required = false) final String name) {
+    if (name != null)
+      return ResponseEntity.ok(userService.getAll(name));
     return ResponseEntity.ok(userService.getAll());
   }
 
