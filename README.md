@@ -25,6 +25,15 @@ O projeto está dividido em etapas separadas por *branches* para facilitar o aco
 
 ### Batendo nos endpoints:
 
+#### Swagger 
+* URL: http://localhost:8080/swagger-ui.html
+
+#### Postman
+
+* Importe a collection: `Unesp.postman_collection.json` para dentro do postman.
+
+ou...
+
 #### Linux CURL to the rescue!
 
 ##### Users V1
@@ -81,5 +90,3 @@ O projeto está dividido em etapas separadas por *branches* para facilitar o aco
   curl -v -X DELETE http://localhost:8080/v2/users/1
   ```
   
-##### Swagger URL: http://localhost:8080/swagger-ui.html
-
