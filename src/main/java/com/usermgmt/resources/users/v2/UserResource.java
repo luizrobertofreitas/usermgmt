@@ -2,6 +2,7 @@ package com.usermgmt.resources.users.v2;
 
 import com.usermgmt.model.dtos.UserDTO;
 import com.usermgmt.service.UserService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class UserResource {
   private UserService userService;
 
   @PostMapping
-  public ResponseEntity post(@RequestBody final UserDTO user) {
+  public ResponseEntity post(@RequestBody @Valid final UserDTO user) {
     return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
   }
 
@@ -38,7 +39,7 @@ public class UserResource {
   }
 
   @PutMapping
-  public ResponseEntity put(@RequestBody final UserDTO user) {
+  public ResponseEntity put(@RequestBody @Valid final UserDTO user) {
     return ResponseEntity.ok(userService.save(user));
   }
 

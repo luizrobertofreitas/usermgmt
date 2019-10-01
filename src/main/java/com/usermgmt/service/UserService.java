@@ -15,6 +15,7 @@ public class UserService {
   private UserRepository userRepository;
 
   public UserDTO save(final UserDTO userDTO) {
+    validate(userDTO);
     return convertUserEntityToUserDTO(
         userRepository.save(
             convertUserDTOToUserEntity(userDTO)));
@@ -33,6 +34,11 @@ public class UserService {
 
   public void delete(final Long id) {
     userRepository.deleteById(id);
+  }
+
+  private void validate(final UserDTO userDTO) {
+    if (userDTO.shouldPasswordBeValidated() && !userDTO.isPasswordConfirmationValid())
+      throw new RuntimeException("Password confirmation is invalid");
   }
 
   private UserEntity convertUserDTOToUserEntity(final UserDTO userDTO) {
