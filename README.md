@@ -23,6 +23,11 @@ O projeto está dividido em etapas separadas por *branches* para facilitar o aco
 * step-6: Exceptions customizadas e tratamento de erros
 * step-7: Swagger, um inicio para documentar API’s
 
+Plus
+
+* step-8-pagination: Paginação de resultados
+* step-8-querydsl: Utilização de querydsl para consultas específicas
+
 ### Batendo nos endpoints:
 
 #### Swagger 
