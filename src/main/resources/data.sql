@@ -1,6 +1,6 @@
-drop table if exists users;
+--drop table if exists users;
 
-create table users (
+create table if not exists users (
   id int auto_increment primary key,
   name varchar(250) not null,
   email varchar(250) not null,
@@ -8,6 +8,6 @@ create table users (
 );
 
 insert into users (name, email, password) values
-('Joseph Microsoft', 'joseph@ms.com', '123'),
+('Bill Microsoft', 'bill@ms.com', '123'),
 ('John Oracle', 'john@oracle.com', '123'),
 ('Peter Google', 'peter@gmail.com', '123');
