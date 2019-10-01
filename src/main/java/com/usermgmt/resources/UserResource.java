@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-@RequestMapping("/v1/users")
+@RequestMapping("/users")
 public class UserResource {
 
   @Autowired
