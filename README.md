@@ -26,7 +26,7 @@ O projeto está dividido em etapas separadas por *branches* para facilitar o aco
 
 #### Linux CURL to the rescue!
 
-Users V1
+##### Users V1
 
   * POST /v1/users
   ```
@@ -53,7 +53,7 @@ Users V1
   curl -v -X DELETE http://localhost:8080/v1/users/1
   ```
 
-Users V2
+##### Users V2
 
   * POST /v2/users
   ```
@@ -80,5 +80,5 @@ Users V2
   curl -v -X DELETE http://localhost:8080/v2/users/1
   ```
   
-Swagger URL: http://localhost:8080/swagger-ui.html
+##### Swagger URL: http://localhost:8080/swagger-ui.html
 
