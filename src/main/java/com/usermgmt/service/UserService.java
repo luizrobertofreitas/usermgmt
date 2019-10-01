@@ -36,7 +36,7 @@ public class UserService {
   }
 
   public List<UserDTO> getAll(final String name) {
-    return userRepository.findByNameLike(name)
+    return userRepository.findByNameLike("%"+name+"%")
         .parallelStream()
         .map(this::convertUserEntityToUserDTO)
         .collect(Collectors.toList());
