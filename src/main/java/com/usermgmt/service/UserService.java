@@ -1,5 +1,7 @@
 package com.usermgmt.service;
 
+import com.usermgmt.exceptions.NotFoundException;
+import com.usermgmt.exceptions.PasswordConfirmationException;
 import com.usermgmt.model.UserRepository;
 import com.usermgmt.model.dtos.UserDTO;
 import com.usermgmt.model.entities.UserEntity;
@@ -22,7 +24,8 @@ public class UserService {
   }
 
   public UserDTO getById(final Long id) {
-    return convertUserEntityToUserDTO(userRepository.getOne(id));
+    return convertUserEntityToUserDTO(
+        userRepository.findById(id).orElseThrow(() -> NotFoundException.builder().resourceId(id).build()));
   }
 
   public List<UserDTO> getAll() {
@@ -38,7 +41,7 @@ public class UserService {
 
   private void validate(final UserDTO userDTO) {
     if (userDTO.shouldPasswordBeValidated() && !userDTO.isPasswordConfirmationValid())
-      throw new RuntimeException("Password confirmation is invalid");
+      throw PasswordConfirmationException.builder().message("Password confirmation is invalid!").userId(userDTO.getId()).build();
   }
 
   private UserEntity convertUserDTOToUserEntity(final UserDTO userDTO) {
