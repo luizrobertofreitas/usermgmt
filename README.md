@@ -8,7 +8,8 @@ Projeto para apresentação de conceitos REST utilizando Spring
 
 ### Banco de dados
 1. Banco de dados: estamos utilizando o H2 que cria um arquivo no diretório do projeto para manter as informações inseridas persistidas mesmo se a aplicação é reiniciada.
-2. Client do H2: http://localhost:8080/h2. Basta clicar em "conectar".
+2. Client do H2: http://localhost:8080/h2.
+3. No campo: `JDBC URL`, informe o caminho do arquivo sem a extensão do mesmo. Ex nome do arquivo `db.mv.db`, coloque apenas `db` no final da URL. Assim: `jdbc:h2:file:${full_path}/usermgmt/db`
 
 ### Como funciona
 
